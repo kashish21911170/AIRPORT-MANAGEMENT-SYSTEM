@@ -1,0 +1,44 @@
+create database airport;
+use airport;
+create table flights(flight_code INTEGER PRIMARY KEY NOT NULL ,priority INTEGER NOT NULL AUTO_INCREMENT, status VARCHAR(25) NOT NULL, destination_code VARCHAR(3) NOT NULL,  source_code VARCHAR(3) NOT NULL,  fuel INTEGER,  airline VARCHAR(15) NOT NULL,  date_of_departure VARCHAR(10) NOT NULL, date_of_arrival VARCHAR(10) NOT NULL,  time_of_departure VARCHAR(8) NOT NULL,  time_of_arrival VARCHAR(8) NOT NULL, INDEX(priority));
+
+
+
+create table bookings(booking_id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, passenger_id INTEGER NOT NULL, flight_code INTEGER NOT NULL, destination_code VARCHAR(3) NOT NULL,  source_code VARCHAR(3) NOT NULL,    airline VARCHAR(15) NOT NULL,  date_of_departure VARCHAR(10) NOT NULL, date_of_arrival VARCHAR(10) NOT NULL,  time_of_departure VARCHAR(8) NOT NULL,  time_of_arrival VARCHAR(8) NOT NULL,ticket_price INTEGER,  quantity INTEGER, FOREIGN KEY (flight_code)REFERENCES flights(flight_code) ON DELETE CASCADE);
+
+
+insert into flights values(1164,1, 'In Hangar', 'LAX',  'DXB',  5, 'Emirates',  '2020-12-12', '2020-12-13',  '20:01:01',  '23:01:04');
+insert into flights values(1111,2, 'In Hangar', 'FSM',  'DXB',  5, 'Delta',  '2020-1-12', '2020-1-13',  '21:01:01',  '22:01:04');
+insert into flights values(4464,3, 'In Hangar', 'LAX',  'WDG',  5, 'Air India',  '2020-10-12', '2020-10-13',  '5:01:01',  '21:01:04');
+insert into flights values(5564,4, 'In Hangar', 'LAX',  'EKO',  5, 'British',  '2020-12-12', '2020-12-13',  '6:01:01',  '20:01:04');
+insert into flights values(8888,5, 'In Hangar', 'LAX',  'FOD',  5, 'Southwest',  '2020-12-12', '2020-12-13',  '7:01:01',  '3:01:04');
+insert into flights values(2222,6, 'In Hangar', 'LAX',  'DXB',  5, 'Emirates',  '2020-12-12', '2020-12-13',  '8:01:01',   '4:01:04');
+insert into flights values(1113,7, 'In Hangar', 'FOD',  'DXB',  5, 'Singapore',  '2020-4-12', '2020-4-13',  '9:01:01',  '7:01:04');
+insert into flights values(9999,8, 'In Hangar', 'LAX',  'FSM',  5, 'Air India',  '2020-12-12', '2020-12-13',  '10:01:01',  '9:01:04');
+insert into flights values(8882,9, 'In Hangar', 'EKO',  'DXB',  5, 'Delta',  '2020-12-12', '2020-12-13',  '11:01:01',  '9:01:04');
+insert into flights values(1169,10, 'In Hangar', 'WDG',  'DXB',  5, 'Emirates',  '2020-5-12', '2020-5-13',  '12:01:01',  '2:01:04');
+insert into flights values(1161,1, 'Arriving', 'LAX',  'DXB',  5, 'Emirates',  '2020-12-12', '2020-12-13',  '20:01:01',  '23:01:04');
+insert into flights values(1110,2, 'Arriving', 'FSM',  'DXB',  5, 'Delta',  '2020-1-12', '2020-1-13',  '21:01:01',  '22:01:04');
+insert into flights values(4461,3, 'Arriving', 'LAX',  'WDG',  5, 'Air India',  '2020-10-12', '2020-10-13',  '5:01:01',  '21:01:04');
+insert into flights values(5561,4, 'Arriving', 'LAX',  'EKO',  5, 'British',  '2020-12-12', '2020-12-13',  '6:01:01',  '20:01:04');
+insert into flights values(8881,5, 'Arriving', 'LAX',  'FOD',  5, 'Southwest',  '2020-12-12', '2020-12-13',  '7:01:01',  '3:01:04');
+insert into flights values(2221,6, 'Arriving', 'LAX',  'DXB',  5, 'Emirates',  '2020-12-12', '2020-12-13',  '8:01:01',   '4:01:04');
+insert into flights values(1116,7, 'Arriving', 'FOD',  'DXB',  5, 'Singapore',  '2020-4-12', '2020-4-13',  '9:01:01',  '7:01:04');
+insert into flights values(9991,8, 'Arriving', 'LAX',  'FSM',  5, 'Air India',  '2020-12-12', '2020-12-13',  '10:01:01',  '9:01:04');
+insert into flights values(8889,9, 'Arriving', 'EKO',  'DXB',  5, 'Delta',  '2020-12-12', '2020-12-13',  '11:01:01',  '9:01:04');
+insert into flights values(1167,10, 'Arriving', 'WDG',  'DXB',  5, 'Emirates',  '2020-5-12', '2020-5-13',  '12:01:01',  '2:01:04');
+ 
+
+
+insert into bookings values(1,1, 1164,  'LAX',  'DXB',  'Emirates',  '2020-12-12', '2020-12-13',  '20:01:01',  '23:01:04' , 10000,  3 ,"On Time");
+insert into bookings values(2,2, 1164,   'FSM',  'DXB',   'Delta',  '2020-1-12', '2020-1-13',  '21:01:01',  '22:01:04', 30000,  1,"On Time");
+insert into bookings values(3,3, 1164,  'LAX',  'WDG',   'Air India',  '2020-10-12', '2020-10-13',  '5:01:01',  '21:01:04', 40000,  4,"On Time");
+insert into bookings values(4,4, 1164,  'LAX',  'EKO',   'British',  '2020-12-12', '2020-12-13',  '6:01:01',  '20:01:04' , 10000,  6,"On Time");
+insert into bookings values(5,5, 1164,   'FSM',  'DXB',   'Delta',  '2020-1-12', '2020-1-13',  '21:01:01',  '22:01:04' , 40000,  7,"On Time");
+insert into bookings values(6,6, 1164,  'LAX',  'DXB',  'Emirates',  '2020-12-12', '2020-12-13',  '20:01:01',  '23:01:04' , 30000,  1,"On Time");
+insert into bookings values(7,7, 1164,  'LAX',  'WDG',   'Air India',  '2020-10-12', '2020-10-13',  '5:01:01',  '21:01:04', 50000,  2,"On Time");
+insert into bookings values(8,8, 1164,  'LAX',  'EKO',   'British',  '2020-12-12', '2020-12-13',  '6:01:01',  '20:01:04' , 60000,  2,"On Time");
+insert into bookings values(9,9, 1164,   'FSM',  'DXB',   'Delta',  '2020-1-12', '2020-1-13',  '21:01:01',  '22:01:04', 20000,  8,"On Time");
+insert into bookings values(10, 10, 1164,   'LAX',  'FOD',   'Southwest',  '2020-12-12', '2020-12-13',  '7:01:01',  '3:01:04' , 10000,  3,"On Time");
+
+create table tickets(ticket_id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, seat_row  INTEGER NOT NULL, seat_column INTEGER NOT NULL,booking_id INTEGER NOT NULL ,  FOREIGN KEY (booking_id)REFERENCES bookings(booking_id) ON DELETE CASCADE);
